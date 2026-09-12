@@ -59,6 +59,7 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/utilities-sections.css" />
     <link rel="stylesheet" href="/css/latest-works.css" />
     <link rel="stylesheet" href="/css/dropdown.css" />
     <!-- Popup Window CSS -->
@@ -275,7 +276,9 @@
     <section id="projects" class="projects-wrap">
       <div class="section-header">
         <h2 class="section-title">Live Works</h2>
-        <p class="section-subtitle">A selection of live frontend interfaces click to view</p>
+        <p class="section-subtitle">
+          A selection of live frontend interfaces click to view
+        </p>
       </div>
       <div class="project-filters">
         <button class="filter-btn active" data-filter="all">All</button>
@@ -387,10 +390,26 @@
           </div>
         </div>
       </div>
-      <div style="text-align: center; margin-top: 20px; margin-bottom: -40px">
-        <a href="/portfolio/#frontend-works" class="btn primary glow-btn"
-          >Portfolio →</a
+      <div class="projects-navigation">
+        <button
+          type="button"
+          class="project-nav-btn prev-project"
+          aria-label="Previous project"
         >
+          ← Prev
+        </button>
+
+        <a href="/portfolio/#frontend-works" class="btn primary glow-btn">
+          Portfolio →
+        </a>
+
+        <button
+          type="button"
+          class="project-nav-btn next-project"
+          aria-label="Next project"
+        >
+          Next →
+        </button>
       </div>
     </section>
     <!-- Infinite Carousel Section -->
@@ -738,7 +757,15 @@
       <div class="section-header">
         <h2 class="section-title fade-in">LATEST <span>BLOG POSTS</span></h2>
         <p class="section-subtitle">
-          Explore the latest insights, ideas, and technical articles from Vimal Tech.
+          Explore the latest insights, ideas, and technical articles from
+          <a
+            href="https://blog.vimaltech.dev/"
+            target="_blank"
+            rel="noopener"
+            class="blog-view-all"
+          >
+            Vimal Tech Blog. <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
         </p>
       </div>
 

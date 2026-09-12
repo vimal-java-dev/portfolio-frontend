@@ -1,0 +1,29 @@
+/* ===== UTILITIES & SECTIONS ===== */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Used by p tag if it looks heading */
+.section-subtitle {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.alt-bg {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    padding: 4rem 2rem;
+}
+
+body.dark .alt-bg {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-center {
+    text-align: center;
+}

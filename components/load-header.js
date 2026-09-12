@@ -1,4 +1,5 @@
 /* ===== load-header.js ===== */
+//  /components/header.js
 fetch("/components/header.html")
   .then((response) => {
     if (!response.ok) throw new Error("Header not found");
@@ -93,21 +94,21 @@ fetch("/components/header.html")
 
       // DESKTOP HOVER
       dropdown.addEventListener("mouseenter", () => {
-        if (window.innerWidth > 768) {
+        if (window.innerWidth > 1024) {
           menu.style.display = "block";
           setTimeout(() => {
             menu.style.opacity = "1";
             menu.style.visibility = "visible";
-            menu.style.transform = "translateY(0)";
+            menu.style.transform = "translateX(-50%) translateY(0)";
           }, 10);
         }
       });
 
       dropdown.addEventListener("mouseleave", () => {
-        if (window.innerWidth > 768) {
+        if (window.innerWidth > 1024) {
           menu.style.opacity = "0";
           menu.style.visibility = "hidden";
-          menu.style.transform = "translateY(10px)";
+          menu.style.transform = "translateX(-50%) translateY(10px)";
           setTimeout(() => {
             if (menu.style.opacity === "0") {
               menu.style.display = "none";
@@ -165,7 +166,7 @@ fetch("/components/header.html")
           // If they clicked the dropdown toggle on mobile, ignore it so the submenu can open
           if (
             e.target.classList.contains("dropdown-toggle") &&
-            window.innerWidth <= 768
+            window.innerWidth <= 1024
           ) {
             return;
           }
@@ -235,7 +236,7 @@ fetch("/components/header.html")
             }
           });
         },
-        { threshold: 0.6 }
+        { threshold: 0.6 },
       );
 
       sections.forEach((section) => {
