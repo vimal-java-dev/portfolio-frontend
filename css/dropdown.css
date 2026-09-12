@@ -14,35 +14,53 @@
 .dropdown-menu {
     display: none;
     position: absolute;
-    /* top: 150%; */
-    left: -10px;
-    min-width: 180px;
+    left: 50%;
+    min-width: 240px;
     border-radius: 12px;
+    margin-top: 20px;
     padding: 12px 0;
     z-index: 1000;
     opacity: 0;
-    transform: translateY(10px);
-    /* transition: opacity 0.3s ease, transform 0.3s ease; */
-
+    transform: translateX(-50%) translateY(10px);
     visibility: hidden;
     /* ADD THIS: A small delay (0.2s) when mouse leaves so it doesn't flicker shut */
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.2s;
     /* CRITICAL: Ensure there's no physical gap. 
        If your menu is lower down, use a transparent border to bridge the gap */
     border-top: 10px solid transparent;
-    /* margin-top: -10px; */
 }
 
 /* 2. The Hover State */
 /* Show dropdown on hover */
-.dropdown:hover .dropdown-menu,
-.dropdown-menu:hover {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+@media (min-width: 1025px) {
 
-    /* Remove the delay on hover-in so it feels instant */
-    transition-delay: 0s;
+    .dropdown:hover .dropdown-menu,
+    .dropdown-menu:hover {
+        overflow: visible;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+        /* Remove the delay on hover-in so it feels instant */
+        transition-delay: 0s;
+    }
+
+    .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 0;
+        height: 0;
+
+        border-left: 18px solid transparent;
+        border-right: 18px solid transparent;
+        border-bottom: 18px solid rgba(255, 255, 255, 0.9);
+
+        pointer-events: none;
+        z-index: 1001;
+    }
 }
 
 .dropdown:hover .dropdown-menu {
@@ -121,18 +139,98 @@
     transform: rotate(180deg);
 }
 
-/* ===== Mobile Dropdown and Hamburger ===== */
+/* =========================================
+   TABLET DROPDOWN
+   769px – 1024px
+========================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .dropdown-menu {
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        display: none;
+        border: none;
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 20% 0 20% !important;
+        border-radius: 12px;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+
+        background: rgba(30, 41, 59, 0.85);
+        box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        will-change: max-height;
+        min-width: 400px;
+    }
+
+    body.dark .dropdown-menu {
+        background: rgba(15, 23, 42, 0.85);
+        /* order work for this BG */
+        box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        will-change: max-height;
+    }
+
+    nav.scrolled .dropdown-menu {
+        /* order work for this BG */
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark nav.scrolled .dropdown-menu {
+        background: rgba(15, 23, 42, 0.85);
+        /* order work for this BG */
+    }
+
+    .dropdown.open .dropdown-menu {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        max-height: 500px;
+        transform: none !important;
+    }
+
+    .dropdown-menu li {
+        margin: 0 0 !important;
+    }
+
+    .dropdown-menu li a {
+        color: #ffffff !important;
+        font-size: 1rem;
+        display: block;
+        width: 100%;
+    }
+
+    /* The Active State - When the user is scrolling that section */
+    .dropdown-menu li a.active {
+        width: 90% !important;
+        margin: 0 30% !important;
+        padding: 10px 10px !important;
+    }
+}
+
+/* ===== Mobile Dropdown Up to 768px ===== */
 @media (max-width: 768px) {
     .dropdown-menu {
         position: static;
-        /* Prevents overlap */
-        /* background: #333; */
-        /* background: transparent; */
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
         border: none;
         display: none;
-        /* Handled by mobile JS */
-        width: 100%;
-        /* padding-left: 16px; */
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 auto !important;
         border-radius: 10px;
         overflow: hidden;
         max-height: 0;
@@ -140,10 +238,10 @@
 
         background: rgba(30, 41, 59, 0.85);
         /* order work for this BG */
-
         box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.3);
         border: 1px solid rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         will-change: max-height;
     }
 
@@ -168,8 +266,17 @@
     }
 
     .dropdown.open .dropdown-menu {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
         max-height: 500px;
-        /* Adjust as needed */
+        transform: none !important;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Mobile view dropdown item styles */
+    .dropdown-menu li {
+        margin: -5px 0 -5px 0 !important;
     }
 
     .dropdown-menu li a {
@@ -177,6 +284,13 @@
         font-size: 1rem;
         display: block;
         width: 100%;
+    }
+
+    /* The Active State - When the user is scrolling that section */
+    .dropdown-menu li a.active {
+        width: 80% !important;
+        margin: 0 20% !important;
+        padding: 10px 10px !important;
     }
 
     /* Mobile view click/tap effect */

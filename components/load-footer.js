@@ -1,4 +1,5 @@
 // load-footer.js
+//  /components/footer.js
 // Add the folder name to the fetch path
 fetch('/components/footer.html')
   .then(response => {

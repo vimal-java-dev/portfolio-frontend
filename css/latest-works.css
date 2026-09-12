@@ -230,17 +230,6 @@ body.dark .project-card a:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
-@media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-
-    .project-card {
-        height: 480px;
-    }
-}
-
 .project-tagline {
     display: block;
     font-size: 0.75rem;
@@ -323,4 +312,207 @@ body.dark #projects {
     position: relative;
     min-height: 500px;
     /* prevents jump */
+}
+
+.projects-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: -40px;
+}
+
+.project-nav-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(30, 41, 59, 0.85);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-nav-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   TABLET — LIVE WORKS SECTION
+   769px to 1024px
+========================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    /* ======================================
+       PROJECT FILTERS
+    ====================================== */
+
+    .project-filters {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+
+    /* Hide ALL button on tablet */
+    .filter-btn[data-filter="all"] {
+        display: none;
+    }
+
+
+    /* Tablet buttons are indicators */
+    .filter-btn {
+        pointer-events: auto;
+        cursor: pointer;
+    }
+
+    /* ======================================
+       PROJECT GRID
+    ====================================== */
+
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(280px, 350px));
+        justify-content: center;
+        align-items: start;
+        gap: 2rem;
+        min-height: auto;
+    }
+
+
+    /* ======================================
+       SINGLE CARD — CENTER
+    ====================================== */
+
+    .projects-grid.tablet-single {
+        grid-template-columns: minmax(280px, 350px);
+        justify-content: center;
+    }
+
+
+    /* ======================================
+       PROJECT CARD
+    ====================================== */
+
+    .project-card {
+        width: 100%;
+        max-width: 350px;
+        height: 420px;
+        margin: 0 auto;
+    }
+
+
+    /* ======================================
+       NAVIGATION
+    ====================================== */
+
+    .projects-navigation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin-top: 25px;
+        margin-bottom: 0;
+    }
+
+
+    .project-nav-btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+/* ==========================================
+   MOBILE — LIVE WORKS
+========================================== */
+
+@media (max-width: 768px) {
+
+    /* ======================================
+       FILTER BUTTONS
+    ====================================== */
+
+    .project-filters {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+
+
+    /* Hide ALL button on mobile */
+    .filter-btn[data-filter="all"] {
+        display: none;
+    }
+
+
+    /* Buttons are visual indicators only */
+    .filter-btn {
+        pointer-events: auto;
+        cursor: pointer;
+    }
+
+    /* ======================================
+       PROJECT GRID
+    ====================================== */
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: start;
+        gap: 2rem;
+        min-height: auto;
+    }
+
+
+    /* ======================================
+       SINGLE MOBILE CARD
+    ====================================== */
+
+    .projects-grid.mobile-single {
+        grid-template-columns: minmax(0, 350px);
+        justify-content: center;
+    }
+
+
+    /* ======================================
+       PROJECT CARD
+    ====================================== */
+
+    .project-card {
+        width: 100%;
+        max-width: 350px;
+        height: 480px;
+        margin: 0 auto;
+    }
+
+
+    /* ======================================
+       NAVIGATION
+    ====================================== */
+
+    .projects-navigation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+
+
+    .project-nav-btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
 }
