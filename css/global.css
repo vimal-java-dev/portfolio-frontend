@@ -86,6 +86,11 @@ p {
     font-style: normal;
 }
 
+/* Body Dark */
+body.dark h3 {
+    --color-text: #ffffff;
+}
+
 /* ===================================================
    ===== Common Navbar (Glassmorphic) =====
 =================================================== */
