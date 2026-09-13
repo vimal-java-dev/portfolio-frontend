@@ -416,7 +416,7 @@
     <!-- ===================================================
      LIVE WEBSITE CAROUSEL
     =================================================== -->
-    <section class="vt-websites-section">
+    <section id="infinite-carousel" class="vt-websites-section">
       <div class="section-header">
         <h2 class="section-title">Live Website Showcase</h2>
 
@@ -753,9 +753,11 @@
     </section>
 
     <!-- Latest Blog Posts Section -->
+    <!-- Horizontal Category Navigation -->
     <section class="latest-blog-section" id="latest-blog-posts">
       <div class="section-header">
-        <h2 class="section-title fade-in">LATEST <span>BLOG POSTS</span></h2>
+        <h2 class="section-title">LATEST <span>BLOG POSTS</span></h2>
+
         <p class="section-subtitle">
           Explore the latest insights, ideas, and technical articles from
           <a
@@ -767,6 +769,33 @@
             Vimal Tech Blog. <i class="fas fa-arrow-up-right-from-square"></i>
           </a>
         </p>
+      </div>
+
+      <!-- Blog Category Navigation -->
+      <div class="blog-category-navigation" aria-label="Blog categories">
+        <button
+          type="button"
+          class="blog-category-button active"
+          data-blog-target="technical-journeys"
+        >
+          Technical Journeys
+        </button>
+
+        <button
+          type="button"
+          class="blog-category-button"
+          data-blog-target="system-design"
+        >
+          System Design
+        </button>
+
+        <button
+          type="button"
+          class="blog-category-button"
+          data-blog-target="dsa"
+        >
+          Data Structures &amp; Algorithms
+        </button>
       </div>
 
       <div class="blog-categories">
@@ -820,9 +849,10 @@
         <article class="blog-category dsa">
           <div class="blog-category-header">
             <div>
-              <span class="blog-category-label"
-                >DATA STRUCTURES &amp; ALGORITHMS</span
-              >
+              <span class="blog-category-label">
+                DATA STRUCTURES &amp; ALGORITHMS
+              </span>
+
               <h3>Data Structures &amp; Algorithms</h3>
             </div>
 

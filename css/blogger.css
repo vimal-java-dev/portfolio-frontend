@@ -4,7 +4,7 @@
 
 .latest-blog-section {
   width: 100%;
-  padding: 90px 6%;
+  padding: 60px 6%;
   box-sizing: border-box;
 }
 
@@ -15,7 +15,7 @@
 
 .latest-blog-section .section-header h2 {
   margin: 0;
-  font-size: 2.2rem;
+  /* font-size: 2.2rem; */
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -26,10 +26,18 @@
 
 .latest-blog-section .section-header p {
   margin-top: 12px;
-  font-size: 1rem;
+  /* font-size: 1rem; */
   opacity: 0.75;
 }
 
+/* =========================================================
+   CATEGORY NAVIGATION
+   Desktop Hidden
+   ========================================================= */
+
+.blog-category-navigation {
+  display: none;
+}
 
 /* =========================================================
    CATEGORY CONTAINER
@@ -42,7 +50,6 @@
   width: 100%;
 }
 
-
 /* =========================================================
    CATEGORY CARD
    ========================================================= */
@@ -54,17 +61,19 @@
   border-radius: 14px;
   background: rgba(172, 3, 3, 0.04);
   box-sizing: border-box;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.blog-category:hover {
-  transform: translateY(-5px);
-  border-color: rgba(128, 128, 128, 0.45);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+/* =========================================================
+   DESKTOP HOVER EFFECT
+   ========================================================= */
+
+@media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+  .blog-category:hover {
+    transform: translateY(-5px);
+    border-color: rgba(128, 128, 128, 0.45);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  }
 }
 
 /* =========================================================
@@ -96,7 +105,6 @@
   font-weight: 700;
 }
 
-
 /* =========================================================
    VIEW ALL
    ========================================================= */
@@ -106,20 +114,16 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-
   font-size: 0.8rem;
   font-weight: 600;
-
   text-decoration: none;
   white-space: nowrap;
-
   transition: opacity 0.2s ease;
 }
 
 .blog-view-all:hover {
   opacity: 0.65;
 }
-
 
 /* =========================================================
    POSTS
@@ -129,7 +133,6 @@
   display: flex;
   flex-direction: column;
 }
-
 
 /* =========================================================
    INDIVIDUAL POST
@@ -152,11 +155,9 @@
 
 .blog-post-title {
   margin: 0 0 7px;
-
   font-size: 0.98rem;
   line-height: 1.45;
   font-weight: 600;
-
   transition: opacity 0.2s ease;
 }
 
@@ -169,7 +170,6 @@
   opacity: 0.55;
 }
 
-
 /* =========================================================
    LOADING / ERROR
    ========================================================= */
@@ -181,36 +181,114 @@
   opacity: 0.6;
 }
 
-
 /* =========================================================
    TABLET
+   769px - 1024px
    ========================================================= */
 
-@media (max-width: 1100px) {
+@media (min-width: 769px) and (max-width: 1024px) {
+  .latest-blog-section {
+    padding: 75px 5%;
+  }
+
+  .latest-blog-section .section-header {
+    margin-bottom: 35px;
+  }
+
+  /* -------------------------------------------------------
+     CATEGORY NAVIGATION
+     ------------------------------------------------------- */
+
+  .blog-category-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    margin-bottom: 28px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.18);
+  }
+
+  .blog-category-button {
+    position: relative;
+    padding: 10px 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    opacity: 0.5;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: opacity 0.25s ease, color 0.25s ease;
+  }
+
+  .blog-category-button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    background: currentColor;
+    transition: transform 0.25s ease;
+  }
+
+  .blog-category-button:hover,
+  .blog-category-button.active {
+    opacity: 1;
+  }
+
+  .blog-category-button.active::after {
+    transform: scaleX(1);
+  }
+
+  /* -------------------------------------------------------
+     HORIZONTAL SLIDER
+     ------------------------------------------------------- */
 
   .blog-categories {
-    grid-template-columns: 1fr;
+    display: flex;
+    width: 100%;
+    gap: 0;
+    padding: 12px 0 18px;
+    overflow-x: auto;
+    overflow-y: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .blog-categories::-webkit-scrollbar {
+    display: none;
   }
 
   .blog-category {
+    flex: 0 0 100%;
     width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: 28px;
   }
-
 }
-
 
 /* =========================================================
    MOBILE
+   768px and Below
    ========================================================= */
 
-@media (max-width: 600px) {
-
+@media (max-width: 768px) {
   .latest-blog-section {
     padding: 65px 5%;
   }
 
   .latest-blog-section .section-header {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
   }
 
   .latest-blog-section .section-header h2 {
@@ -222,13 +300,92 @@
     line-height: 1.6;
   }
 
+  /* -------------------------------------------------------
+     CATEGORY NAVIGATION
+     ------------------------------------------------------- */
+
+  .blog-category-navigation {
+    display: flex;
+    width: 100%;
+    gap: 24px;
+    margin-bottom: 22px;
+    padding-bottom: 2px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.18);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .blog-category-navigation::-webkit-scrollbar {
+    display: none;
+  }
+
+  .blog-category-button {
+    position: relative;
+    flex-shrink: 0;
+    padding: 9px 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    opacity: 0.5;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: opacity 0.25s ease, color 0.25s ease;
+  }
+
+  .blog-category-button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    background: currentColor;
+    transition: transform 0.25s ease;
+  }
+
+  .blog-category-button.active {
+    opacity: 1;
+  }
+
+  .blog-category-button.active::after {
+    transform: scaleX(1);
+  }
+
+  /* -------------------------------------------------------
+     HORIZONTAL SLIDER
+     ------------------------------------------------------- */
+
   .blog-categories {
     display: flex;
-    flex-direction: column;
-    gap: 18px;
+    width: 100%;
+    gap: 0;
+    padding: 12px 0 18px;
+    overflow-x: auto;
+    overflow-y: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .blog-categories::-webkit-scrollbar {
+    display: none;
   }
 
   .blog-category {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
     padding: 22px;
     border-radius: 12px;
   }
@@ -245,4 +402,17 @@
     font-size: 0.72rem;
   }
 
+  .blog-post-title {
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================================================
+   BLOG CARD INTERACTION
+   ========================================================= */
+
+.blog-category:active {
+  transform: translateY(-3px);
+  border-color: rgba(128, 128, 128, 0.45);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
 }
